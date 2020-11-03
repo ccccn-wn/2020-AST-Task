@@ -95,7 +95,60 @@
 
 #### 分支（Branch）
 
-> > >  
+> > >  如何在偷偷变强的同时不影响别人或者被别人发现呢？
 
+* 创建分支
+  * `git checkout -b dev`
+  *  `git branch`命令会列出所有分支，当前分支前面会标一个`*`号。 
 
+* 合并分支
+  *  `git merge <name of the branch> `命令用于合并指定分支到当前分支 
+
+* 切换分支
+  *  创建并切换到新的`dev`分支，可以使用 `git switch -c dev`
+  *  直接切换到已有的`master`分支，可以使用： `git switch master`
+
+*  删除分支：`git branch -d ` 
+
+> > > 小伙伴们也在偷偷变强，他们也想合并自己的分支，这会造成了冲突，怎么搞？
+
+* 分支冲突
+  *   当多个分支之间的文件各自有更新时直接合并会出现冲突，用`$ git status`可以查看冲突的文件。
+  * 此时直接`cat`文件会看到`git`用`<<<<<<<`，`=======`，`>>>>>>>`标记出不同分支的内容。 
+  *  用`git log --graph`命令可以看到分支合并图。 
+  *  合并分支时，如果可能，Git会用`Fast forward`模式，但这种模式下，删除分支后，会丢掉分支信息 
+  *  准备合并`dev`分支，请注意`--no-ff`参数，表示禁用`Fast forward` 
+  *  `--no-ff`参数就可以用普通模式合并，合并后的历史
+  * `fast forward`合并就看不出来曾经做过合并 
+
+  ````c
+  git merge --no-ff -m "merge with no-ff" dev
+  ````
+
+> > >  然而实际的开发之中，分支管理不可能这么混乱
+
+*  实际工作中的分支策略
+  *  首先，`master`分支应该是非常稳定的，平时不能在上面干活 
+  *  干活都在`dev`分支上，也就是说，`dev`分支是不稳定的 
+  *  再把`dev`分支合并到`master`上 
+
+> > > 想把当前分支的工作储存，转到另外一个分支
+
+*  `git stash`功能，可以把当前工作现场“储藏”起来 
+
+   用`git stash list`命令查看被藏起来的东西
+
+   用`git stash pop`，恢复的同时把stash内容也删了 
+
+* 多次stash， 然后恢复指定的stash  `git stash apply stash@{0}`
+
+#### 标签
+
+*  命令`git tag `用于新建一个标签，默认为`HEAD`，也可以指定一个commit id 
+*  命令`git tag -a  -m "blablabla..."`可以指定标签信息 
+*  命令`git tag`可以查看所有标签 
+*  命令`git push origin `可以推送一个本地标签 
+*  命令`git push origin --tags`可以推送全部未推送过的本地标签 
+* 命令`git tag -d `可以删除一个本地标签；
+*  命令`git push origin :refs/tags/`可以删除一个远程标签 
 
