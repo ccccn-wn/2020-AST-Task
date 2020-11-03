@@ -31,9 +31,9 @@
 
 * 有一个配合fork的操作：pull。将fork改进之后的东西PR，开源者就会看到，并且考虑是否将这个改进之后的项目加到原有的项目上
 
+#### 提交添加文件
 
-
-## 添加文件
+> > >
 
 * 要把文件放到这个仓库下
 
@@ -64,18 +64,38 @@
 
     ​					再往前修改 `git reset --hard 版本号` 
 
-* git status 查看仓库状态
+* `git status` 查看仓库状态
 
-* git diff 查看修改的地方
+* `git diff `查看修改的地方
 
-* git log 历史记录
+* `git log` 历史记录
 
-*  git reset --hard HEAD^（回到上一个版本）
+* `git reflog `记录每一次命令
 
-  ​					HEAD~100（回到上100个版本）
+*  `git branch -r `查看远程所有分支 
 
-  再往前修改 git reset --hard 版本号
+#### 远程仓库（remote Repository）
 
-* git reflog 记录每一次命令
+> > > 如之前所说， `GitHub`告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到`GitHub`仓库。 
 
-*  git branch -r 查看远程所有分支 
+* 关联远程库 
+
+  ````
+  git remote add origin git@github.com:michaelliao/learngit.git
+  ````
+
+   `michaelliao`替换成`GitHub`账户名 
+
+*  把本地库的内容推送到远程，用`git push`命令，实际上是把当前分支`master`推送到远程。 `git push -u <name of remote Repository> <branch>`
+* 关联后，使用命令`git push -u origin master`第一次推送master分支的所有内容
+
+> > >如果现有远程库，那么，如何clone？
+
+*  要克隆一个仓库，首先必须知道仓库的地址，然后使用`git clone`命令克隆。 
+
+#### 分支（Branch）
+
+> > >  
+
+
+
